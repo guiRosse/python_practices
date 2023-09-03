@@ -19,13 +19,11 @@ print(hangman_art.logo)
 
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
 chosen_word = random.choice(word_list)
-print("*******************************************************************\n\n")
-
 print(f"**TEST MODE ON*** \nThe selected word from the list is {chosen_word}\n\n")  # Enabled for testing only. Showing the selected word.
 
 for _ in chosen_word:
     blanks.append("_")
-    mystery_word += "_"
+    mystery_word += " _"
 
 print(f"Your word is {mystery_word}")
 
@@ -34,11 +32,14 @@ print(f"Your word is {mystery_word}")
 # the letters in the chosen_word and 'display' has no more 
 # blanks ("_"). Then you can tell the user they've won.
 
-print("\n\n*******************************************************************")
+print("\n*******************************************************************")
 
 while not has_won and not has_lost:
     #TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
     guess = input("\n\nChoose a letter: ").lower()
+
+    if guess in blanks:
+        print(f"You have already guessed the letter {guess}. Please try again..")
     #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 
     #TODO-3.1: - Use a while loop to let the user guess again. The loop should only stop once the user has guessed all the letters in the chosen_word and 'display' has no more blanks ("_"). Then you can tell the user they've won.
@@ -53,8 +54,10 @@ while not has_won and not has_lost:
     elif lives == 0:
         has_lost = True
         print(hangman[lives])
+        print(f"The letter {guess} is not in the word.")
         print("Game over! You lose")
     else:
+        print(f"The letter {guess} is not in the word. You lose a life")
         print(hangman[lives])
         lives-=1
     
