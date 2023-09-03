@@ -38,6 +38,7 @@ while not has_won and not has_lost:
     #TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
     guess = input("\n\nChoose a letter: ").lower()
 
+    cls.clear_screen()
     if guess in blanks:
         print(f"You have already guessed the letter {guess}. Please try again..")
     #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
@@ -53,15 +54,14 @@ while not has_won and not has_lost:
 
     elif lives == 0:
         has_lost = True
-        print(hangman[lives])
         print(f"The letter {guess} is not in the word.")
         print("Game over! You lose")
     else:
         print(f"The letter {guess} is not in the word. You lose a life")
-        print(hangman[lives])
         lives-=1
     
     print(f"{' '.join(blanks)}")
+    print(hangman[lives])
 
     if "_" not in blanks:
         has_won = True
