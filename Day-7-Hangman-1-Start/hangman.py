@@ -1,72 +1,21 @@
 #Step 1 
 import random
+import hangman_art
+import word_list
 import cls #    Import a small fn for clearing screen conveniently
 
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-stage_num = len(stages)-1
-word_list = ["aardvark", "baboon", "camel"]
+lives = len(hangman_art.stages)-1
+hangman = hangman_art.stages
+word_list = word_list.challenge_words
 blanks = []         #   A placeholder for my blanks for the next steps
 mystery_word = ""   #   Only used to displaay the list items of [blanks] as an actual word
 has_won = False # Variable for letting the game go on with winning chances
 has_lost = False # Variable for letting the game go on as losing
 
 cls.clear_screen()
+
+print(hangman_art.logo)
 
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
 chosen_word = random.choice(word_list)
@@ -101,13 +50,13 @@ while not has_won and not has_lost:
                 blanks[index] = letter   # Blanks list item get to be replaced by the guessed letter
         
 
-    elif stage_num == 0:
+    elif lives == 0:
         has_lost = True
-        print(stages[stage_num])
+        print(hangman[lives])
         print("Game over! You lose")
     else:
-        print(stages[stage_num])
-        stage_num-=1
+        print(hangman[lives])
+        lives-=1
     
     print(f"{' '.join(blanks)}")
 
