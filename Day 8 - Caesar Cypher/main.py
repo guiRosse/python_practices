@@ -6,6 +6,8 @@ go_again = "y"
 # #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 def caesar(start_text, shift_position, direction):
     end_text = ""
+    shift_position = shift_position % len(alphabet)
+    print(f"Shift is {shift_position}")
     for letter in start_text:
         if letter in alphabet:
             if direction == "encode":
@@ -45,8 +47,8 @@ while go_again.lower() == "yes" or go_again.lower() == "y":
     print(logo)
     print("***************************\n")
     # print("Test Runs")
-    # caesar("civilization", 5, "encode")
-    # caesar("hnanqnefynts", 5, "decode")
+    # caesar("civilization", 213, "encode")
+    # caesar("hnanqnefynts", 213, "decode")
 
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
