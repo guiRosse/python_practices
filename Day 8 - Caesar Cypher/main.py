@@ -1,8 +1,9 @@
 import cls
+from logo import logo
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 go_again = "y"
 
-#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
+# #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 def caesar(start_text, shift_position, direction):
     end_text = ""
     for letter in start_text:
@@ -41,14 +42,15 @@ while go_again.lower() == "yes" or go_again.lower() == "y":
     #print output: "The encoded text is mjqqt"
 
     cls.clear_screen()
-    print("***************************\n\n")
-    print("Test Runs")
-    caesar("civilization", 5, "encode")
-    caesar("hnanqnefynts", 5, "decode")
+    print(logo)
+    print("***************************\n")
+    # print("Test Runs")
+    # caesar("civilization", 5, "encode")
+    # caesar("hnanqnefynts", 5, "decode")
 
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
     caesar(text, shift_position=shift, direction=direction)
     
-    go_again = input("Would you like to go again? Tpye 'Yes' or 'No'.")
+    go_again = input("Would you like to go again? Typye 'Yes' or 'No' : ")
